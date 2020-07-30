@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
-const User = require('../models/User');
-const HashingService = require('../services/HashingService');
+const User = require('../models/user');
 const secrets = require('../config/secrets.json');
 
 module.exports = {
@@ -8,8 +7,7 @@ module.exports = {
     const user = await User.findOne({
       where: {
         email: req.body.email,
-        password: HashingService.hashString(req.body.password),
-        isVerified: true,
+        password: req.body.password,
       },
     });
     if (user) {

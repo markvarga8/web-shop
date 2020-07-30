@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const SignInController = require('../controllers/SignIncontroller');
 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+router.post('/signIn', SignInController.signIn);
 
 module.exports = router;
