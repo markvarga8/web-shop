@@ -13,8 +13,7 @@ module.exports = {
     if (user) {
       const token = jwt.sign({ userId: user.id }, secrets.jwtSecret);
       res.json({
-        token,
-        user,
+        token
       });
     } else {
       res.status(401).json({ error: 'Invalid email/password or not verified user' });

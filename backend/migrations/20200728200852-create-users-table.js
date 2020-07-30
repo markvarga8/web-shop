@@ -8,7 +8,12 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
       },
-      nickname: {
+      firstname: {
+        type: Sequelize.STRING,
+        unique: true,
+        allowNull: false,
+      },
+      lastname: {
         type: Sequelize.STRING,
         unique: true,
         allowNull: false,
@@ -21,6 +26,10 @@ module.exports = {
       password: {
         type: Sequelize.STRING,
         allowNull: false,
+      },
+      isVerified: {
+        type: Sequelize.BOOLEAN,
+        default: false,
       },
       createdAt: {
         allowNull: false,

@@ -1,7 +1,9 @@
 [
   {
-    "nickname": "Beni",
+    "firstname": "Beni",
+    "lastname": "example",
     "email": "user@example.com",
-    "password": "secret"
+    "password": "secret",
+    "isVerified": 1
   }
 ]

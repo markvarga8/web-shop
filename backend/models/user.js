@@ -6,7 +6,16 @@ const config = require('../config/config.json')[env];
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
 const User = sequelize.define('users', {
-  nickname: {
+  firstname: {
+    type: Sequelize.STRING,
+    unique: true,
+    allowNull: false,
+    validate: {
+      notEmpty: true,
+      len: [3, 255],
+    },
+  },
+  lastname: {
     type: Sequelize.STRING,
     unique: true,
     allowNull: false,
@@ -31,6 +40,10 @@ const User = sequelize.define('users', {
       notEmpty: true,
       len: [6, 255],
     },
+  },
+  isVerified: {
+    type: Sequelize.BOOLEAN,
+    default: false,
   },
 });
 
