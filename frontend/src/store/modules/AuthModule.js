@@ -38,7 +38,7 @@ export default {
       }
     },
     async signin (context, user) {
-      // context.commit('deleteSessionData')
+      context.commit('deleteSessionData')
       try {
         const result = await http(context).post('/signin', user)
         context.commit('setSessionData', result.data)

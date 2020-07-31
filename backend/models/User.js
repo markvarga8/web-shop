@@ -8,7 +8,6 @@ const sequelize = new Sequelize(config.database, config.username, config.passwor
 const User = sequelize.define('users', {
   firstname: {
     type: Sequelize.STRING,
-    unique: true,
     allowNull: false,
     validate: {
       notEmpty: true,
@@ -17,7 +16,6 @@ const User = sequelize.define('users', {
   },
   lastname: {
     type: Sequelize.STRING,
-    unique: true,
     allowNull: false,
     validate: {
       notEmpty: true,

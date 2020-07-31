@@ -5,9 +5,10 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item href="/signin">Saját fiók</b-nav-item>
+          <b-nav-item v-if="user" @click="logout()">Kijelentkezés</b-nav-item>
+          <b-nav-item v-if="!user" href="/signin">Saját fiók</b-nav-item>
           <b-nav-item href="#">Kedvencek</b-nav-item>
-          <b-nav-item href="#">Termékek</b-nav-item>
+          <b-nav-item href="/product">Termékek</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
@@ -24,7 +25,18 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
-  name: 'NavigationComponent'
+  name: 'NavigationComponent',
+  computed: mapState({
+    user: (state) => state.auth.user
+  }),
+  methods: {
+    logout () {
+      this.$store.dispatch('auth/logout')
+      this.$router.push('/')
+    }
+  }
 }
 </script>
