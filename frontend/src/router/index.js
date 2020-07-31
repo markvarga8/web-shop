@@ -15,6 +15,18 @@ const routes = [
     name: 'SignIn',
     meta: { title: 'Sign In' },
     component: () => import('../views/SignIn.vue')
+  },
+  {
+    path: '/registration',
+    name: 'registration',
+    meta: { title: 'registration' },
+    component: () => import('../views/Registration.vue')
+  },
+  {
+    path: '/registration/verify',
+    name: 'Verification',
+    meta: { title: 'Verification' },
+    component: () => import('../views/Verification.vue')
   }
 ]
 

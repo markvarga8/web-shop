@@ -12,6 +12,7 @@
         <b-button variant="outline-success" type="submit" class="mr-2">Sign in</b-button>
       </div>
     </b-form>
+    <a href="/registration">Ha nincs még fiókod kattints ide a regisztrációhoz</a>
   </div>
 </template>
 
@@ -26,11 +27,11 @@ export default {
   methods: {
     async signin () {
       await this.$store.dispatch('auth/signin', this.user)
-      /* if (this.$store.state.auth.user) {
+      if (this.$store.state.auth.user) {
         this.$router.push('/')
-      } */ /* else {
+      } else {
         this.error = this.$store.state.auth.error
-      } */
+      }
     }
   }
 }
