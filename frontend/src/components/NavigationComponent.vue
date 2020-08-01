@@ -7,13 +7,16 @@
         <b-navbar-nav>
           <b-nav-item v-if="user" @click="logout()">Kijelentkezés</b-nav-item>
           <b-nav-item v-if="!user" href="/signin">Saját fiók</b-nav-item>
-          <b-nav-item href="#">Kedvencek</b-nav-item>
           <b-nav-item href="/product">Termékek</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
-            <b-nav-item href="#">
-              <b-icon-basket class="h2 m-2"></b-icon-basket>
+            <b-nav-item href="#" v-b-modal.modal-1>
+              <b-modal id="modal-1" title="Kosár">
+                <p class="my-4">Hello from modal!</p>
+              </b-modal>
+              <b-icon-basket class="h2 m-2">
+              </b-icon-basket>
             </b-nav-item>
             <b-form-input size="sm" class="mr-sm-2" placeholder="Keresés"></b-form-input>
             <b-button size="sm" class="my-2 my-sm-0" type="submit">Keresés</b-button>

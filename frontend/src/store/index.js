@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import VuexPersistence from 'vuex-persist'
 
 import AuthModule from './modules/AuthModule'
+import ProductModule from './modules/ProductModule'
 
 Vue.use(Vuex)
 
@@ -13,7 +14,8 @@ const persistence = new VuexPersistence({
 
 export default new Vuex.Store({
   modules: {
-    auth: AuthModule
+    auth: AuthModule,
+    product: ProductModule
   },
   plugins: [
     persistence.plugin

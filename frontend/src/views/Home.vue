@@ -1,6 +1,6 @@
 <template>
   <div>
-        <b-carousel
+      <b-carousel
       class="mt-3"
       :interval="3000"
       controls

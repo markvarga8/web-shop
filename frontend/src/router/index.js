@@ -13,20 +13,26 @@ const routes = [
   {
     path: '/signin',
     name: 'SignIn',
-    meta: { title: 'Sign In' },
+    meta: { title: 'Bejelentkezés' },
     component: () => import('../views/SignIn.vue')
   },
   {
     path: '/registration',
     name: 'registration',
-    meta: { title: 'registration' },
+    meta: { title: 'Regisztráció' },
     component: () => import('../views/Registration.vue')
   },
   {
     path: '/registration/verify',
     name: 'Verification',
-    meta: { title: 'Verification' },
+    meta: { title: 'Aktiválás' },
     component: () => import('../views/Verification.vue')
+  },
+  {
+    path: '/product',
+    name: 'Product',
+    meta: { title: 'Termékek' },
+    component: () => import('../views/Product.vue')
   }
 ]
 
