@@ -4,7 +4,6 @@ export default {
   namespaced: true,
   state: {
     photos: null,
-    title: null,
     loading: false
   },
   mutations: {
@@ -19,8 +18,9 @@ export default {
     async getPhotos (context) {
       context.commit('setLoading', true)
       try {
-        const result = await http(context).get('https://jsonplaceholder.typicode.com/photos')
-        context.commit('setPhotos', result.data)
+        const result = await http(context).get('/product')
+        context.commit('setPhotos', result.data.products)
+        console.log(result.data.products)
       } catch (err) {
         console.log(err)
       }
