@@ -52,7 +52,8 @@
 <script>
 export default {
   name: 'Home',
-  components: {
+  created () {
+    this.$store.dispatch('product/getPhotos')
   }
 }
 </script>

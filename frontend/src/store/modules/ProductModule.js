@@ -1,4 +1,6 @@
 import http from '../helpers/HttpHelper'
+// import search from '../helpers/SearchHelper'
+// import lunr from 'lunr'
 
 export default {
   namespaced: true,
@@ -20,11 +22,13 @@ export default {
       try {
         const result = await http(context).get('/product')
         context.commit('setPhotos', result.data.products)
-        console.log(result.data.products)
       } catch (err) {
         console.log(err)
       }
       context.commit('setLoading', false)
+    },
+    search (sd) {
+      // const data = context.state.photos
     }
   }
 }

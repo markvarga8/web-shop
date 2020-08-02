@@ -18,8 +18,11 @@
               <b-icon-basket class="h2 m-2">
               </b-icon-basket>
             </b-nav-item>
-            <b-form-input size="sm" class="mr-sm-2" placeholder="Keresés"></b-form-input>
-            <b-button size="sm" class="my-2 my-sm-0" type="submit">Keresés</b-button>
+            <b-form @submit.prevent="search">
+              <b-form-input size="sm" class="mr-sm-2" placeholder="Keresés" v-model="searchData"></b-form-input>
+              <pre>{{searchData}}</pre>
+              <b-button size="sm" class="my-2 my-sm-0" type="submit">Keresés</b-button>
+            </b-form>
           </b-nav-form>
         </b-navbar-nav>
       </b-collapse>
@@ -33,12 +36,29 @@ import { mapState } from 'vuex'
 export default {
   name: 'NavigationComponent',
   computed: mapState({
-    user: (state) => state.auth.user
+    user: (state) => state.auth.user,
+    items: (state) => state.product.photos
+  }),
+  data: () => ({
+    searchData: '',
+    allDisplay: []
   }),
   methods: {
     logout () {
       this.$store.dispatch('auth/logout')
       this.$router.push('/')
+    },
+    search () {
+      const result = this.items.map((item) => {
+        return item.title
+      })
+      console.log(result.indexOf('enim quis quisquam quae'))
+      if (result.indexOf(this.searchData) > -1) {
+        this.$store.dispatch('product/search', result.indexOf(this.searchData))
+        console.log('goooooo')
+      } else {
+        console.log(result)
+      }
     }
   }
 }
