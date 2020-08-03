@@ -17,25 +17,32 @@
 </template>
 
 <script>
-import ProductDto from '../dtos/ProductDto'
+// import ProductDto from '../dtos/ProductDto'
 import { mapState } from 'vuex'
 
 export default {
   props: {
-    item: { ProductDto }
+    item: Object
   },
   computed: mapState({
     items: (state) => state.product.photos,
-    loading: (state) => state.product.loading
+    loading: (state) => state.product.loading,
+    basket: (state) => state.product.basket
   }),
   data: () => ({
     checked: false,
-    basketStatus: false
+    itemArr: []
   }),
   methods: {
     uploadBasket () {
-      this.$store.dispatch('product/basket', this.item)
+      if (!this.basket) {
+        this.itemArr.push(this.item)
+        this.$store.dispatch('product/basket', this.itemArr)
+      } else {
+        this.$store.dispatch('product/basket', this.item)
+      }
       alert('termék a kosárba helyezve!')
+      console.log(this.item)
     }
   }
 }

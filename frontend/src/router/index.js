@@ -39,6 +39,12 @@ const routes = [
     name: 'Search',
     meta: { title: 'Keresés' },
     component: () => import('../views/Search.vue')
+  },
+  {
+    path: '/basket',
+    name: 'Basket',
+    meta: { title: 'Kosár' },
+    component: () => import('../views/Basket.vue')
   }
 ]
 

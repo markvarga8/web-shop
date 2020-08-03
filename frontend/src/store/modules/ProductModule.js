@@ -18,10 +18,21 @@ export default {
       state.index = payload
     },
     setBasket: (state, payload) => {
-      state.basket = payload
+      if (!state.basket) {
+        state.basket = payload
+      } else {
+        state.basket.push(payload)
+      }
     },
     setLoading: (state, payload) => {
       state.loading = payload
+    },
+    deleteSessionData: (state, payload) => {
+      const result = state.basket - payload
+      state.basket = result
+      console.log('state', parseFloat(state.basket))
+      console.log('payload', payload)
+      console.log('result', parseFloat(result))
     }
   },
   actions: {
@@ -39,7 +50,14 @@ export default {
       context.commit('setIndex', sd)
     },
     basket (context, data) {
+      console.log(data)
       context.commit('setBasket', data)
+    },
+    basketDelete (context, data) { // eslint-disable-next-line
+      const result = this.state.basket.map((item) => {
+        return item.id
+      })
+      context.commit('deleteSessionData', result)
     }
   }
 }

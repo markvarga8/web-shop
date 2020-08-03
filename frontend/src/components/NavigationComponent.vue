@@ -8,11 +8,7 @@
           <b-nav-item v-if="!user" href="/signin">Saját fiók</b-nav-item>
           <b-nav-item href="/product">Termékek</b-nav-item>
         </b-navbar-nav>
-        <Basket
-          v-for="basket in baskets"
-          :key="basket.id"
-          :basket="basket"
-        />
+        <b-nav-item href="/basket">Kosár</b-nav-item>
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
             <b-form @submit.prevent="search">
@@ -39,17 +35,12 @@
 
 <script>
 import { mapState } from 'vuex'
-import Basket from '../views/Basket'
 
 export default {
   name: 'NavigationComponent',
-  components: {
-    Basket
-  },
   computed: mapState({
     user: (state) => state.auth.user,
-    items: (state) => state.product.photos,
-    baskets: (state) => state.product.basket
+    items: (state) => state.product.photos
   }),
   data: () => ({
     searchData: '',
