@@ -52,12 +52,12 @@ export default {
       const result = this.items.map((item) => {
         return item.title
       })
-      console.log(result.indexOf('enim quis quisquam quae'))
       if (result.indexOf(this.searchData) > -1) {
-        this.$store.dispatch('product/search', result.indexOf(this.searchData))
-        console.log('goooooo')
+        const index = result.indexOf(this.searchData)
+        this.$store.dispatch('product/search', index)
+        this.$router.push('/search')
       } else {
-        console.log(result)
+        alert('Nincs találat')
       }
     }
   }

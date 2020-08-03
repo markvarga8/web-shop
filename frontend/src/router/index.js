@@ -33,6 +33,12 @@ const routes = [
     name: 'Product',
     meta: { title: 'Termékek' },
     component: () => import('../views/Product.vue')
+  },
+  {
+    path: '/search',
+    name: 'Search',
+    meta: { title: 'Keresés' },
+    component: () => import('../views/Search.vue')
   }
 ]
 

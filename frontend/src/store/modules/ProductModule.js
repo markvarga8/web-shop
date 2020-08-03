@@ -6,11 +6,15 @@ export default {
   namespaced: true,
   state: {
     photos: null,
-    loading: false
+    loading: false,
+    index: null
   },
   mutations: {
     setPhotos: (state, payload) => {
       state.photos = payload
+    },
+    setIndex: (state, payload) => {
+      state.index = payload
     },
     setLoading: (state, payload) => {
       state.loading = payload
@@ -27,8 +31,8 @@ export default {
       }
       context.commit('setLoading', false)
     },
-    search (sd) {
-      // const data = context.state.photos
+    search (context, sd) {
+      context.commit('setIndex', sd)
     }
   }
 }
