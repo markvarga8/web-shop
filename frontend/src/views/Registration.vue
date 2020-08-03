@@ -9,10 +9,10 @@
         </b-alert>
         <div v-if="$v.user.lastname.$dirty">
           <b-alert show variant="danger" v-if="!$v.user.lastname.required">
-            lastnameame is required
+            Vezetéknév kötelező!
           </b-alert>
           <b-alert show variant="danger" v-if="!$v.user.lastname.minLength">
-            Name should be at least 3 characters long
+            Minimum 3 karakter hosszú vezetéknév szükséges!
           </b-alert>
         </div>
       </b-form-group>
@@ -24,10 +24,10 @@
         </b-alert>
         <div v-if="$v.user.firstname.$dirty">
           <b-alert show variant="danger" v-if="!$v.user.firstname.required">
-            firstname is required
+            Keresztnév kötelező!
           </b-alert>
           <b-alert show variant="danger" v-if="!$v.user.firstname.minLength">
-            Name should be at least 3 characters long
+            Minimum 3 karakter hosszú kersztnév szükséges!
           </b-alert>
         </div>
       </b-form-group>
@@ -39,10 +39,10 @@
         </b-alert>
         <div v-if="$v.user.email.$dirty">
           <b-alert show variant="danger" v-if="!$v.user.email.required">
-            email is required
+            Email cím kötelező!
           </b-alert>
           <b-alert show variant="danger" v-if="!$v.user.email.email">
-             valid
+             Kérjük adjon meg valid email címet!
           </b-alert>
         </div>
       </b-form-group>
@@ -54,10 +54,10 @@
         </b-alert>
         <div v-if="$v.user.password.$dirty">
           <b-alert show variant="danger" v-if="!$v.user.password.required">
-            Password is required
+            Jelszó kötelező!
           </b-alert>
           <b-alert show variant="danger" v-if="!$v.user.password.minLength">
-            Password should be at least 6 characters long
+            Minimum 6 karakter hosszú jelszó szükséges!
           </b-alert>
         </div>
       </b-form-group>
@@ -66,16 +66,16 @@
         <b-form-input type="password" v-model="repeatPassword" @input="$v.repeatPassword.$touch()" />
         <div v-if="$v.repeatPassword.$dirty">
           <b-alert show variant="danger" v-if="!$v.repeatPassword.required">
-            Repeat password is required
+            Jelszó imétlése kötelező!
           </b-alert>
           <b-alert show variant="danger" v-if="!$v.repeatPassword.sameAsPassword">
-            Should be same as password
+            A két jelszó nem egyezik!
           </b-alert>
         </div>
       </b-form-group>
 
       <div class="text-right">
-        <b-button variant="outline-success" type="submit" class="mr-2">Sign in</b-button>
+        <b-button variant="secondary" type="submit" class="mr-2">Regisztráció</b-button>
       </div>
     </b-form>
   </div>
@@ -104,7 +104,7 @@ export default {
     async register () {
       try {
         await axios.post(`${process.env.VUE_APP_API_ENDPOINT}/registration`, this.user)
-        this.$router.push('/signin?success=true')
+        this.$router.push('/')
       } catch (err) {
         this.error = err.response.data
       }

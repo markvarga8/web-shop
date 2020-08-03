@@ -21,7 +21,7 @@ import { mapState } from 'vuex'
 
 export default {
   props: {
-    item: ProductDto
+    item: { ProductDto }
   },
   computed: mapState({
     items: (state) => state.product.photos,

@@ -29,7 +29,7 @@
         </div>
       </b-form-group>
       <div class="text-right">
-        <b-button variant="outline-success" type="submit" class="mr-2">Sign in</b-button>
+        <b-button variant="secondary" type="submit" class="mr-2">Bejelentkezés</b-button>
       </div>
     </b-form>
     <p>

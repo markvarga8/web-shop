@@ -5,24 +5,33 @@
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
-          <b-nav-item v-if="user" @click="logout()">Kijelentkezés</b-nav-item>
           <b-nav-item v-if="!user" href="/signin">Saját fiók</b-nav-item>
           <b-nav-item href="/product">Termékek</b-nav-item>
         </b-navbar-nav>
+        <b-nav-item href="#" v-b-modal.modal-1>
+          <b-modal id="modal-1" title="Kosár">
+            <p class="my-4">Hello from modal!</p>
+          </b-modal>
+          <b-icon-basket id="icon" class="h1 mb-2" variant="secondary">
+          </b-icon-basket>
+        </b-nav-item>
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
-            <b-nav-item href="#" v-b-modal.modal-1>
-              <b-modal id="modal-1" title="Kosár">
-                <p class="my-4">Hello from modal!</p>
-              </b-modal>
-              <b-icon-basket class="h2 m-2">
-              </b-icon-basket>
-            </b-nav-item>
             <b-form @submit.prevent="search">
-              <b-form-input size="sm" class="mr-sm-2" placeholder="Keresés" v-model="searchData"></b-form-input>
-              <pre>{{searchData}}</pre>
-              <b-button size="sm" class="my-2 my-sm-0" type="submit">Keresés</b-button>
+              <b-row>
+                <b-col>
+                  <b-form-input size="sm" class="mr-sm-2" placeholder="Keresés" v-model="searchData"></b-form-input>
+                </b-col>
+                <b-col>
+                  <b-button size="sm" class="my-2 my-sm-0" type="submit">Keresés</b-button>
+                </b-col>
+              </b-row>
             </b-form>
+            <b-nav-item v-if="user" @click="logout()">
+              <b-button variant="secondary" class="mr-sm-2">
+                <b-icon icon="power" aria-hidden="true"></b-icon> Kijelentkezés
+              </b-button>
+            </b-nav-item>
           </b-nav-form>
         </b-navbar-nav>
       </b-collapse>
@@ -63,3 +72,9 @@ export default {
   }
 }
 </script>
+
+<style>
+  li {
+    list-style-type: none;
+  }
+</style>
