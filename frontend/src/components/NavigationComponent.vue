@@ -8,13 +8,11 @@
           <b-nav-item v-if="!user" href="/signin">Saját fiók</b-nav-item>
           <b-nav-item href="/product">Termékek</b-nav-item>
         </b-navbar-nav>
-        <b-nav-item href="#" v-b-modal.modal-1>
-          <b-modal id="modal-1" title="Kosár">
-            <p class="my-4">Hello from modal!</p>
-          </b-modal>
-          <b-icon-basket id="icon" class="h1 mb-2" variant="secondary">
-          </b-icon-basket>
-        </b-nav-item>
+        <Basket
+          v-for="basket in baskets"
+          :key="basket.id"
+          :basket="basket"
+        />
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
             <b-form @submit.prevent="search">
@@ -41,12 +39,17 @@
 
 <script>
 import { mapState } from 'vuex'
+import Basket from '../views/Basket'
 
 export default {
   name: 'NavigationComponent',
+  components: {
+    Basket
+  },
   computed: mapState({
     user: (state) => state.auth.user,
-    items: (state) => state.product.photos
+    items: (state) => state.product.photos,
+    baskets: (state) => state.product.basket
   }),
   data: () => ({
     searchData: '',

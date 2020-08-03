@@ -1,10 +1,11 @@
 <template>
   <div>
     <b-card class="m-3" style="width: 20rem;">
+      <b-row class="mb-1 ml-1">
+        <b-button variant="secondary">Kosárba</b-button>
+      </b-row>
       <b-row>
         <b-col>
-          <b-form-checkbox v-model="checked" name="check-button" switch>
-          </b-form-checkbox>
           <img v-bind:src="filterByItem[0].thumbnailUrl">
         </b-col>
         <b-col>

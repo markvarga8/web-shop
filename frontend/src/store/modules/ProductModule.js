@@ -7,7 +7,8 @@ export default {
   state: {
     photos: null,
     loading: false,
-    index: null
+    index: null,
+    basket: null
   },
   mutations: {
     setPhotos: (state, payload) => {
@@ -15,6 +16,9 @@ export default {
     },
     setIndex: (state, payload) => {
       state.index = payload
+    },
+    setBasket: (state, payload) => {
+      state.basket = payload
     },
     setLoading: (state, payload) => {
       state.loading = payload
@@ -33,6 +37,9 @@ export default {
     },
     search (context, sd) {
       context.commit('setIndex', sd)
+    },
+    basket (context, data) {
+      context.commit('setBasket', data)
     }
   }
 }

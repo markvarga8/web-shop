@@ -1,10 +1,11 @@
 <template>
   <div>
     <b-card class="m-3" style="width: 20rem;">
+      <b-row class="mb-1 ml-1">
+        <b-button @click="uploadBasket" variant="secondary">Kosárba</b-button>
+      </b-row>
       <b-row>
         <b-col>
-          <b-form-checkbox v-model="checked" name="check-button" switch>
-          </b-form-checkbox>
           <img v-bind:src="item.thumbnailUrl">
         </b-col>
         <b-col>
@@ -28,7 +29,14 @@ export default {
     loading: (state) => state.product.loading
   }),
   data: () => ({
-    checked: false
-  })
+    checked: false,
+    basketStatus: false
+  }),
+  methods: {
+    uploadBasket () {
+      this.$store.dispatch('product/basket', this.item)
+      alert('termék a kosárba helyezve!')
+    }
+  }
 }
 </script>
