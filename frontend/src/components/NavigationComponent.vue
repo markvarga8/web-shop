@@ -7,8 +7,8 @@
         <b-navbar-nav>
           <b-nav-item v-if="!user" href="/signin">Saját fiók</b-nav-item>
           <b-nav-item href="/product">Termékek</b-nav-item>
+          <b-nav-item href="/basket">Kosár</b-nav-item>
         </b-navbar-nav>
-        <b-nav-item href="/basket">Kosár</b-nav-item>
         <b-navbar-nav class="ml-auto">
           <b-nav-form>
             <b-form @submit.prevent="search">

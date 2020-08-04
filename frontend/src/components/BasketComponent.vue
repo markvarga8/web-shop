@@ -25,15 +25,14 @@ export default {
     basket: Object
   },
   computed: mapState({
-    baskets: (state) => state.product.basket
+    baskets: (state) => state.product.basket,
+    basketStatus: (state) => state.product.status
   }),
   methods: {
     deleteBasket () { // eslint-disable-next-line
       const result = this.baskets.filter((item) => item.id !== this.basket.id)
-      console.log(result)
       this.$store.dispatch('product/basketDelete', result)
       alert('termék Törölve a kosárból!')
-      this.$router.go()
     }
   }
 }

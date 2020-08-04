@@ -5,7 +5,6 @@ const UserActivation = require('../models/UserActivation');
 module.exports = {
   create: async (userData) => {
     try {
-      console.log('vmi')
       const user = await User.create(userData);
       return user;
     } catch (err) {

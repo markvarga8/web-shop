@@ -1,8 +1,11 @@
 <template>
   <div>
     <b-card class="m-3" style="width: 20rem;">
-      <b-row class="mb-1 ml-1">
+      <b-row v-if="!status" v-model="status" class="mb-1 ml-1">
         <b-button @click="uploadBasket" variant="secondary">Kosárba</b-button>
+      </b-row>
+      <b-row v-if="status" v-model="status" class="mb-1 ml-1">
+        <b-button @click="deleteBasket" variant="secondary">Törlés</b-button>
       </b-row>
       <b-row>
         <b-col>
@@ -17,32 +20,43 @@
 </template>
 
 <script>
-// import ProductDto from '../dtos/ProductDto'
-import { mapState } from 'vuex'
+import store from '../store'
 
 export default {
   props: {
     item: Object
   },
-  computed: mapState({
-    items: (state) => state.product.photos,
-    loading: (state) => state.product.loading,
-    basket: (state) => state.product.basket
-  }),
   data: () => ({
-    checked: false,
+    items: store.state.product.photos,
+    baskets: store.state.product.basket,
+    loading: store.state.product.loading,
+    basketStatus: false,
     itemArr: []
   }),
+  computed: {
+    status () {
+      const result = this.baskets.filter((basket) => basket.id === this.item.id)
+      if (result[0]) { // eslint-disable-next-line
+        return true
+      }
+      return false
+    }
+  },
   methods: {
     uploadBasket () {
-      if (!this.basket) {
+      if (!this.baskets) {
         this.itemArr.push(this.item)
         this.$store.dispatch('product/basket', this.itemArr)
       } else {
         this.$store.dispatch('product/basket', this.item)
       }
       alert('termék a kosárba helyezve!')
-      console.log(this.item)
+    },
+    deleteBasket () { // eslint-disable-next-line
+      const result = this.baskets.filter((basket) => basket.id !== this.item.id)
+      this.$store.dispatch('product/basketDelete', result)
+      alert('termék Törölve a kosárból!')
+      this.$router.go()
     }
   }
 }

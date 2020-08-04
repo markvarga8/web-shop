@@ -1,10 +1,12 @@
 <template>
   <div>
-    <BasketComponent
-      v-for="basket in baskets"
-      :key="basket.id"
-      :basket="basket"
-    />
+    <b-row>
+      <BasketComponent
+        v-for="basket in baskets"
+        :key="basket.id"
+        :basket="basket"
+      />
+    </b-row>
   </div>
 </template>
 

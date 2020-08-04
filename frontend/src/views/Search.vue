@@ -29,17 +29,8 @@ export default {
       const photos = this.$store.state.product.photos
       const index = this.$store.state.product.index
       const result = photos.filter((item) => item.id === index + 1)
-      // console.log(result)
       return result
     }
-  },
-  methods: {
-    /* filterByItem () {
-      const photos = this.$store.state.product.photos
-      const index = this.$store.state.product.index
-      const result = photos.filter((item) => item.id === index + 1)
-      console.log(this.$store.state.product.index)
-    } */
   }
 }
 </script>

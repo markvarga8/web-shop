@@ -46,7 +46,6 @@ export default {
       context.commit('setIndex', sd)
     },
     basket (context, data) {
-      console.log(data)
       context.commit('setBasket', data)
     },
     basketDelete (context, data) {
