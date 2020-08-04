@@ -1,9 +1,6 @@
 <template>
   <div>
     <b-card class="m-3" style="width: 20rem;">
-      <b-row class="mb-1 ml-1">
-        <b-button variant="secondary">Kosárba</b-button>
-      </b-row>
       <b-row>
         <b-col>
           <img v-bind:src="filterByItem[0].thumbnailUrl">

@@ -23,7 +23,7 @@
             </b-form>
             <b-nav-item v-if="user" @click="logout()">
               <b-button variant="secondary" class="mr-sm-2">
-                <b-icon icon="power" aria-hidden="true"></b-icon> Kijelentkezés
+                <b-icon icon="power" aria-hidden="true"></b-icon> {{user.firstname}}
               </b-button>
             </b-nav-item>
           </b-nav-form>

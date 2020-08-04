@@ -1,4 +1,4 @@
-<template>
+<template id="child-template">
   <div>
     <b-card class="m-3" style="width: 20rem;">
       <b-row v-if="!status" v-model="status" class="mb-1 ml-1">
@@ -15,11 +15,6 @@
           <b-card-text class="ml-2">{{item.title}}</b-card-text>
         </b-col>
       </b-row>
-      <b-row>
-        <b-button @click="renderDetails" href="/subproduct">
-          részletek
-        </b-button>
-      </b-row>
     </b-card>
   </div>
 </template>
@@ -28,13 +23,9 @@
 import store from '../store'
 
 export default {
-  props: {
-    item: Object
-  },
   data: () => ({
-    items: store.state.product.photos,
+    item: store.state.product.detail,
     baskets: store.state.product.basket,
-    loading: store.state.product.loading,
     basketStatus: false,
     itemArr: []
   }),

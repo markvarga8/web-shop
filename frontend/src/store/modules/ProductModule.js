@@ -8,7 +8,8 @@ export default {
     photos: null,
     loading: false,
     index: null,
-    basket: null
+    basket: null,
+    detail: null
   },
   mutations: {
     setPhotos: (state, payload) => {
@@ -29,6 +30,9 @@ export default {
     },
     deleteSessionData: (state, payload) => {
       state.basket = payload
+    },
+    setDeatails: (state, payload) => {
+      state.detail = payload
     }
   },
   actions: {
@@ -50,6 +54,9 @@ export default {
     },
     basketDelete (context, data) {
       context.commit('deleteSessionData', data)
+    },
+    renderDetails (context, data) {
+      context.commit('setDeatails', data)
     }
   }
 }

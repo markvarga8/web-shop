@@ -45,6 +45,12 @@ const routes = [
     name: 'Basket',
     meta: { title: 'Kosár' },
     component: () => import('../views/Basket.vue')
+  },
+  {
+    path: '/subproduct',
+    name: 'Sub product',
+    meta: { title: 'Termék' },
+    component: () => import('../components/SubProductComponent')
   }
 ]
 
