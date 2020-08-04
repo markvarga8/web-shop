@@ -25,8 +25,7 @@ export default {
     basket: Object
   },
   computed: mapState({
-    baskets: (state) => state.product.basket,
-    basketStatus: (state) => state.product.status
+    baskets: (state) => state.product.basket
   }),
   methods: {
     deleteBasket () { // eslint-disable-next-line
