@@ -18,17 +18,22 @@
 
 <script>
 // import ProductDto from '../dtos/ProductDto'
+import { mapState } from 'vuex'
 
 export default {
   props: {
     basket: Object
   },
+  computed: mapState({
+    baskets: (state) => state.product.basket
+  }),
   methods: {
-    deleteBasket () {
-      this.$store.dispatch('product/basketDelete', this.basket)
+    deleteBasket () { // eslint-disable-next-line
+      const result = this.baskets.filter((item) => item.id !== this.basket.id)
+      console.log(result)
+      this.$store.dispatch('product/basketDelete', result)
       alert('termék Törölve a kosárból!')
-      // this.$router.go()
-      console.log(this.basket)
+      this.$router.go()
     }
   }
 }

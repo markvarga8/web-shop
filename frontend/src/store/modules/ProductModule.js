@@ -28,11 +28,7 @@ export default {
       state.loading = payload
     },
     deleteSessionData: (state, payload) => {
-      const result = state.basket - payload
-      state.basket = result
-      console.log('state', parseFloat(state.basket))
-      console.log('payload', payload)
-      console.log('result', parseFloat(result))
+      state.basket = payload
     }
   },
   actions: {
@@ -53,11 +49,8 @@ export default {
       console.log(data)
       context.commit('setBasket', data)
     },
-    basketDelete (context, data) { // eslint-disable-next-line
-      const result = this.state.basket.map((item) => {
-        return item.id
-      })
-      context.commit('deleteSessionData', result)
+    basketDelete (context, data) {
+      context.commit('deleteSessionData', data)
     }
   }
 }

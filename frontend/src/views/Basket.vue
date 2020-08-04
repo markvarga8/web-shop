@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{baskets}}
     <BasketComponent
       v-for="basket in baskets"
       :key="basket.id"
