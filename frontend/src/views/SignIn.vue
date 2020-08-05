@@ -1,7 +1,7 @@
 <template>
   <div>
-    <b-form @submit.prevent="signin">
-      <h1>Saját fiók</h1>
+    <b-form class="w-50 mx-auto" @submit.prevent="signin">
+      <h1 class="mb-3">Bejelentkezés</h1>
       <b-alert show variant="success" class="mt-3 text-center" v-if="justVerified">
         Üdv {{firstname}}, sikeres regisztráció!
       </b-alert>
@@ -29,12 +29,10 @@
         </div>
       </b-form-group>
       <div class="text-right">
-        <b-button variant="secondary" type="submit" class="mr-2">Bejelentkezés</b-button>
+        <b-button class="mr-2" href="/registration">Regisztráció</b-button>
+        <b-button variant="success" type="submit">Bejelentkezés</b-button>
       </div>
     </b-form>
-    <p>
-      <a href="/registration">Regisztrációhoz kattints ide</a>
-    </p>
   </div>
 </template>
 
@@ -80,7 +78,7 @@ export default {
       if (from.path === '/registration/verify') {
         vm.justVerified = true; //eslint-disable-line
       }
-      if (from.path === '/registration' && to.query.success) {
+      if (from.path === '/registration' /* && to.query.success */) {
         vm.justRegistered = true; //eslint-disable-line
       }
     })

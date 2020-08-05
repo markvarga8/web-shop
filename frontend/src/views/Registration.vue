@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Regisztráció</h1>
-    <b-form @submit.prevent="register">
+    <b-form class="w-50 mx-auto" @submit.prevent="register">
+      <h1>Regisztráció</h1>
       <b-form-group label="Vezetéknév">
         <b-form-input type="text" v-model="user.lastname" @input="$v.user.lastname.$touch()" />
         <b-alert show variant="danger" v-if="getFieldBackendError('lastname')">
@@ -62,7 +62,7 @@
         </div>
       </b-form-group>
 
-      <b-form-group label="Repeat password">
+      <b-form-group label="Jelszó újra">
         <b-form-input type="password" v-model="repeatPassword" @input="$v.repeatPassword.$touch()" />
         <div v-if="$v.repeatPassword.$dirty">
           <b-alert show variant="danger" v-if="!$v.repeatPassword.required">
@@ -75,7 +75,7 @@
       </b-form-group>
 
       <div class="text-right">
-        <b-button variant="secondary" type="submit" class="mr-2">Regisztráció</b-button>
+        <b-button variant="success" type="submit">Regisztráció</b-button>
       </div>
     </b-form>
   </div>
@@ -104,7 +104,7 @@ export default {
     async register () {
       try {
         await axios.post(`${process.env.VUE_APP_API_ENDPOINT}/registration`, this.user)
-        this.$router.push('/')
+        this.$router.push('/signin')
       } catch (err) {
         this.error = err.response.data
       }

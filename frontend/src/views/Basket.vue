@@ -8,13 +8,13 @@
       />
     </b-row>
     <b-row v-if="!baskets[0]">
-      <b-card class="mx-auto bg-info m-3" style="width: 25rem;" align="center">
+      <b-card class="mx-auto bg-info m-3" style="width: 25rem;" align="center" bg-variant="danger">
         <b-row>
           <b-col>
             <b-card-text>Jelenleg nincsenek termékek a kosaradban</b-card-text>
           </b-col>
           <b-col>
-            <b-button href="/product" variant="secondary">Kattints ide a termékek megtekintéséhez</b-button>
+            <b-button href="/product" variant="success">Ugrás a termékekhez</b-button>
           </b-col>
         </b-row>
       </b-card>

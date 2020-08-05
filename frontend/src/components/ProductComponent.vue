@@ -1,24 +1,25 @@
 <template>
   <div>
     <b-card class="m-3" style="width: 20rem;">
-      <b-row v-if="!status" v-model="status" class="mb-1 ml-1">
-        <b-button @click="uploadBasket" variant="secondary">Kosárba</b-button>
-      </b-row>
-      <b-row v-if="status" v-model="status" class="mb-1 ml-1">
-        <b-button @click="deleteBasket" variant="secondary">Törlés</b-button>
-      </b-row>
       <b-row>
-        <b-col>
-          <img v-bind:src="item.thumbnailUrl">
-        </b-col>
-        <b-col>
-          <b-card-text class="ml-2">{{item.title}}</b-card-text>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-button @click="renderDetails" href="/subproduct">
-          részletek
-        </b-button>
+        <b-row>
+          <b-col>
+            <a @click="renderDetails" href="/subproduct">
+              <img v-bind:src="item.thumbnailUrl">
+            </a>
+          </b-col>
+          <b-col>
+            <a @click="renderDetails" href="/subProduct">
+              <b-card-text id="text" class="ml-2">{{item.title}}</b-card-text>
+            </a>
+          </b-col>
+        </b-row>
+        <b-row v-if="!status" v-model="status" class="mx-auto">
+          <b-button class="mt-3" @click="uploadBasket" variant="secondary">Kosárba</b-button>
+        </b-row>
+        <b-row v-if="status" v-model="status" class="mx-auto">
+          <b-button class="mt-3" @click="deleteBasket" variant="secondary">Törlés</b-button>
+        </b-row>
       </b-row>
     </b-card>
   </div>
@@ -40,9 +41,11 @@ export default {
   }),
   computed: {
     status () {
-      const result = this.baskets.filter((basket) => basket.id === this.item.id)
-      if (result[0]) { // eslint-disable-next-line
-        return true
+      if (this.baskets) {
+        const result = this.baskets.filter((basket) => basket.id === this.item.id)
+        if (result[0]) { // eslint-disable-next-line
+          return true
+        }
       }
       return false
     }
@@ -69,3 +72,12 @@ export default {
   }
 }
 </script>
+
+<style>
+  #text {
+    color: gray;
+  }
+  a {
+    text-decoration: none !important;
+  }
+</style>

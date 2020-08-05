@@ -1,19 +1,21 @@
 <template id="child-template">
   <div>
     <b-card class="m-3" style="width: 20rem;">
-      <b-row v-if="!status" v-model="status" class="mb-1 ml-1">
-        <b-button @click="uploadBasket" variant="secondary">Kosárba</b-button>
-      </b-row>
-      <b-row v-if="status" v-model="status" class="mb-1 ml-1">
-        <b-button @click="deleteBasket" variant="secondary">Törlés</b-button>
-      </b-row>
       <b-row>
-        <b-col>
-          <img v-bind:src="item.thumbnailUrl">
-        </b-col>
-        <b-col>
-          <b-card-text class="ml-2">{{item.title}}</b-card-text>
-        </b-col>
+        <b-row>
+          <b-col>
+            <img v-bind:src="item.thumbnailUrl">
+          </b-col>
+          <b-col>
+            <b-card-text class="ml-2">{{item.title}}</b-card-text>
+          </b-col>
+        </b-row>
+        <b-row v-if="!status" v-model="status" class="mx-auto">
+          <b-button class="mt-3" @click="uploadBasket" variant="secondary">Kosárba</b-button>
+        </b-row>
+        <b-row v-if="status" v-model="status" class="mx-auto">
+          <b-button class="mt-3" @click="deleteBasket" variant="secondary">Törlés</b-button>
+        </b-row>
       </b-row>
     </b-card>
   </div>
