@@ -1,5 +1,6 @@
 <template>
   <div>
+    {{vmi}}
       <b-carousel
       class="mt-3"
       :interval="3000"
@@ -53,7 +54,13 @@
 export default {
   name: 'Home',
   created () {
+    this.$cookie.set('test', 'Hello world!', { expires: '1m' })
     this.$store.dispatch('product/getPhotos')
+  },
+  computed: {
+    vmi () {
+      return this.$cookie.get('test')
+    }
   }
 }
 </script>
