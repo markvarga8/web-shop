@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{vmi}}
       <b-carousel
       class="mt-3"
       :interval="3000"
@@ -61,6 +60,9 @@ export default {
     vmi () {
       return this.$cookie.get('test')
     }
-  }
+  },
+  data: () => ({
+    pivotData: 'vmi'
+  })
 }
 </script>
