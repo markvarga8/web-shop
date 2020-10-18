@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{vmi}}
       <b-carousel
       class="mt-3"
       :interval="3000"
@@ -26,7 +25,7 @@
           <img
             class="d-block img-fluid w-100"
             width="1024"
-            height="480"
+            height="480" 
             src="https://picsum.photos/1024/480/?image=55"
             alt="image slot"
           >
@@ -61,6 +60,9 @@ export default {
     vmi () {
       return this.$cookie.get('test')
     }
-  }
+  },
+  data: () => ({
+    pivotData: 'vmi'
+  })
 }
 </script>
